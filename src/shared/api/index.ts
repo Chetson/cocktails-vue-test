@@ -19,7 +19,7 @@ export const fetchCocktailData = async (
     }
   }
 
-  const response = await fetch('/api/json/v1/1/search.php?s=' + query);
+  const response = await fetch(import.meta.env.MODE === 'production' ? 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' : '/api/json/v1/1/search.php?s=' + query);
 
   if (!response.ok) {
     return Promise.reject('Response error');
